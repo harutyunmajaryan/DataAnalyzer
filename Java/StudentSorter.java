@@ -9,7 +9,7 @@ public class StudentSorter {
     // Gonna use HashMap to reduce the work and time + its easier to use for this case
     public static Map<String, List<Student>> map = new HashMap<>();
 
-    public static void sortStudentsByYears(List<Student> students, List<Subject> subjects) {
+    public static Map<String, List<Student>> sortStudentsByYears(List<Student> students, List<Subject> subjects) {
         map.clear();
         String courseName;
         int year;
@@ -115,15 +115,17 @@ public class StudentSorter {
         for (String key : keysToRemove){
             map.remove(key);
         }
-        System.out.print(map);
+        return map;
     }
 
     public static void main(String[] args){
     //this part is to import the data from Main
         Main.loadData();
         List<Student> students = Main.allStudents;
-        List<Subject> subjects = Main.allSubjects;     
-        sortStudentsByYears(students, subjects);
-    }        
+        List<Subject> subjects = Main.allSubjects;  
+        Map<String, List<Student>> map = sortStudentsByYears(students, subjects);
+        //System.out.println(map);
+        
+    }   
 }    
 
